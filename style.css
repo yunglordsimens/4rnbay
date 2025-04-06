@@ -1,0 +1,71 @@
+body {
+    font-family: "Arial", monospace;
+    background-color: #000000;
+    color: #ff0000;
+    margin: 0;
+    padding: 20px;
+    line-height: 1;
+}
+
+.container {
+    max-width: 800px;
+/*    margin: 0 auto; */
+    margin: 20;
+    padding: 10px;
+}
+
+.ascii-art {
+    font-family: "Consolas", monospace;
+    font-size: 14px;
+/* color: #FF00F2; */
+    white-space: pre-wrap;
+    margin: 20px 0;
+}
+
+.info {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.image {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px 0;
+    display: block;
+}
+.image2 {
+    width: 30%;
+    max-width: 600px;
+    margin: 20px 0;
+    display: block;
+}
+
+.image3 {
+    height: 200px;
+    width: auto;
+    margin: 20px 0;
+    display: block;
+}
+
+.image4 {
+    max-height: 600px;
+    width: auto;
+    margin: 20px 0;
+    display: block;
+}
+
+a.link1 {
+    color:#FF0004;
+    text-decoration: underline;
+}
+
+a.link2 {
+    color: rgb(0, 0, 255); 
+    text-decoration: underline;
+}
+
+a.link1:hover,
+a.link2:hover {
+    color: #ffd900;
+    text-decoration: none; 
+}
