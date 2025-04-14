@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Abeceda 2024</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .full-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .gallery-wrapper {
+            max-width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-wrapper" id="gallery"></div>
+
+    <script>
+        const imageFolder = 'publications_img/abceda_2024/'; // Путь к папке с изображениями
+        const imageCount = 8; // сколько изображений у тебя в папке
+        const imageExtensions = ['jpg', 'jpeg', 'png', 'gif']; // Расширения изображений
+
+        const gallery = document.getElementById('gallery');
+
+        function loadGallery() {
+            for (let i = 1; i <= imageCount; i++) {
+                for (let ext of imageExtensions) {
+                    const img = document.createElement('img');
+                    img.src = `${imageFolder}${i}.${ext}`;
+                    img.alt = `Фото ${i}`;
+                    img.className = 'full-image';
+                    img.onerror = () => img.remove(); // Если изображение не найдено, удалить его
+                    gallery.appendChild(img);
+                }
+            }
+        }
+
+        loadGallery();
+
+        // Автоматическое изменение высоты iframe, если это нужно
+        function adjustIframeHeight() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({ type: 'resize-iframe', height: height }, '*');
+        }
+
+        window.addEventListener('load', adjustIframeHeight);
+        window.addEventListener('resize', adjustIframeHeight);
+    </script>
+</body>
+</html>
