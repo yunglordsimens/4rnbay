@@ -29,19 +29,7 @@
 <body>
     <div class="gallery-wrapper" id="gallery"></div>
 
-    <script>
-        fetch('abeceda_2024/images.json') ///
-            .then(response => response.json())
-            .then(files => {
-                const gallery = document.getElementById('gallery');
-                files.forEach(file => {
-                    const img = document.createElement('img');
-                    img.src = `abeceda_2024/${file}`; ///
-                    img.className = 'full-image';
-                    gallery.appendChild(img);
-                });
-            });
-        </script>
+    <script src="imagesiframe.js"></script>
 
 </body>
 </html>
