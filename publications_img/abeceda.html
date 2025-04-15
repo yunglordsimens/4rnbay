@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Abceda 2024</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .full-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .gallery-wrapper {
+            max-width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-wrapper" id="gallery"></div>
+
+    <script>
+        fetch('abeceda_2024/images.json') ///
+            .then(response => response.json())
+            .then(files => {
+                const gallery = document.getElementById('gallery');
+                files.forEach(file => {
+                    const img = document.createElement('img');
+                    img.src = `abeceda_2024/${file}`; ///
+                    img.className = 'full-image';
+                    gallery.appendChild(img);
+                });
+            });
+        </script>
+
+</body>
+</html>
