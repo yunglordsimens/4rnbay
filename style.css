@@ -111,18 +111,3 @@ a.link2:hover {
     }
   }
 
-  .gallery {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .gallery img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-  }
-
