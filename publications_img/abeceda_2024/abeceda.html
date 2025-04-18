@@ -8,6 +8,27 @@
 <body>
   <div class="gallery" id="gallery"></div>
 
+  <style>
+    body {
+    margin: 0;
+    padding: 0;
+  }
+
+    .gallery {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+    .gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  </style>
+
   <script>
     fetch('images.json')
       .then(response => response.json())
