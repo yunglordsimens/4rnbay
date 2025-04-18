@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>BCAD_2022</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="gallery" id="gallery"></div>
+
+  <style>
+    body {
+    margin: 0;
+    padding: 0;
+  }
+
+    .gallery {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+    .gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  </style>
+
+  <script>
+    fetch('images.json')
+      .then(response => response.json())
+      .then(images => {
+        const gallery = document.getElementById('gallery');
+        images.forEach(filename => {
+          const img = document.createElement('img');
+          img.src = filename;
+          img.alt = filename;
+          gallery.appendChild(img);
+        });
+      })
+      .catch(error => {
+        console.error('Ошибка загрузки:', error);
+        document.getElementById('gallery').innerText = 'Не удалось загрузить изображения.';
+      });
+  </script>
+
+</body>
+</html>
