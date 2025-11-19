@@ -1,0 +1,130 @@
+/* Сброс стилей и шрифты */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f4f4f4; /* Светло-серый фон, как бумага */
+    color: #000;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+/* Шапка */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    mix-blend-mode: difference; /* Чтобы текст был виден на темных картинках */
+    color: #fff; /* Инверсия цвета за счет blend-mode */
+}
+
+nav a {
+    margin-left: 2rem;
+    text-decoration: none;
+    color: inherit;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Главный список */
+.project-list {
+    margin-top: 20vh; /* Отступ сверху */
+    margin-bottom: 10vh;
+    padding: 0 2rem;
+}
+
+.project-item {
+    border-top: 1px solid #ccc;
+}
+
+.project-item:last-child {
+    border-bottom: 1px solid #ccc;
+}
+
+.project-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 2rem 0;
+    text-decoration: none;
+    color: #000;
+    transition: opacity 0.3s;
+    position: relative;
+    z-index: 2;
+}
+
+/* Типографика списка */
+.p-name {
+    font-size: 3vw; /* Крупный текст, зависит от ширины экрана */
+    font-weight: 500;
+    width: 40%;
+}
+
+.p-type {
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace; /* Моноширинный для контраста */
+    color: #555;
+    width: 30%;
+}
+
+.p-year {
+    font-size: 1rem;
+    text-align: right;
+    width: 30%;
+}
+
+/* Ховер эффект списка */
+.project-list:hover .project-link {
+    opacity: 0.3; /* Все неактивные становятся бледными */
+}
+
+.project-list .project-link:hover {
+    opacity: 1; /* Активный - яркий */
+}
+
+/* ПРЕВЬЮ КАРТИНКИ (Магия) */
+.hover-preview {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40vw; /* Размер картинки */
+    height: 50vh;
+    pointer-events: none; /* Чтобы сквозь картинку можно было кликать */
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.hover-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Когда мы добавляем класс 'active' через JS, картинка появляется */
+.hover-preview.active {
+    opacity: 1;
+}
+
+/* Адаптив для мобилок */
+@media (max-width: 768px) {
+    .p-name { font-size: 1.5rem; }
+    .p-type { display: none; } /* Скрываем тип на телефоне */
+    .hover-preview { display: none; } /* Убираем ховер на телефоне */
+    header { padding: 1rem; }
+}
