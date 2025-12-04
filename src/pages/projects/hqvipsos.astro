@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// 1. МАГИЯ: Мы ищем ВСЕ картинки (jpg, png, jpeg, webp) в папке hqvipsos
+// Звездочка * означает "любое имя файла"
+const images = await Astro.glob('../../assets/hqvipsos/*.{jpeg,jpg,png,webp}');
+---
+
+<BaseLayout pageTitle="HQVIPSOS — Project">
+
+    <main>
+        <section class="project-hero">
+            <h1 class="project-title">HQVIPSOS</h1>
+            </section>
+
+        <div class="slider-wrapper">
+            <h3 class="slider-label">Gallery ({images.length} images)</h3>
+            
+            <div class="slider-container">
+                <div class="slider-track">
+                    
+                    {images.map((img) => (
+                        <div class="slide">
+                            <img src={img.default} alt="Project image" loading="lazy" />
+                        </div>
+                    ))}
+
+                </div>
+            </div>
+
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn">←</button>
+                <div class="slide-counter">
+                    <span class="current-slide">1</span> / <span class="total-slides">{images.length}</span>
+                </div>
+                <button class="slider-btn next-btn">→</button>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const sliders = document.querySelectorAll('.slider-wrapper');
+        sliders.forEach(wrapper => {
+            const track = wrapper.querySelector('.slider-track') as HTMLElement;
+            const slides = wrapper.querySelectorAll('.slide');
+            const nextBtn = wrapper.querySelector('.next-btn');
+            const prevBtn = wrapper.querySelector('.prev-btn');
+            const currentSlideEl = wrapper.querySelector('.current-slide');
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            function updateSlider() {
+                if(track) track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                if(currentSlideEl) currentSlideEl.textContent = (currentIndex + 1).toString();
+            }
+
+            nextBtn?.addEventListener('click', () => {
+                currentIndex = (currentIndex < totalSlides - 1) ? currentIndex + 1 : 0;
+                updateSlider();
+            });
+
+            prevBtn?.addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalSlides - 1;
+                updateSlider();
+            });
+        });
+    </script>
+
+</BaseLayout>

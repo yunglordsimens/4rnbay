@@ -1,16 +1,59 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout pageTitle="YUNGLORDSIMENS — Work">
+    
+    <div id="hover-preview" class="hover-preview">
+        <img src="" alt="Preview" id="preview-image">
+    </div>
+
+    <main class="project-list">
+        
+        <div class="project-item">
+            <a href="/projects/hqvipsos" class="project-link" data-image="/assets/hqvipsos-preview.jpg">
+                <span class="p-name">HQVIPSOS</span>
+                <span class="p-type">Art Direction</span>
+                <span class="p-year">2024</span>
+            </a>
+        </div>
+
+        <div class="project-item">
+            <a href="/projects/audiovisual" class="project-link" data-image="/assets/audio-preview.jpg">
+                <span class="p-name">Audiovisual</span>
+                <span class="p-type">Creative Coding</span>
+                <span class="p-year">2023</span>
+            </a>
+        </div>
+
+        <div class="project-item">
+            <a href="/projects/haase" class="project-link" data-image="/assets/haase-preview.jpg">
+                <span class="p-name">Haase</span>
+                <span class="p-type">Web Dev</span>
+                <span class="p-year">2023</span>
+            </a>
+        </div>
+
+    </main>
+
+    <script>
+        const links = document.querySelectorAll('.project-link');
+        const previewContainer = document.getElementById('hover-preview');
+        const previewImage = document.getElementById('preview-image');
+
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                const imageSrc = link.getAttribute('data-image');
+                if (imageSrc && previewImage instanceof HTMLImageElement) {
+                    previewImage.src = imageSrc;
+                    previewContainer?.classList.add('active');
+                }
+            });
+
+            link.addEventListener('mouseleave', () => {
+                previewContainer?.classList.remove('active');
+            });
+        });
+    </script>
+
+</BaseLayout>

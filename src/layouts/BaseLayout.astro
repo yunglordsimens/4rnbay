@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+const { pageTitle } = Astro.props;
+---
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{pageTitle}</title>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><a href="/">YUNGLORDSIMENS</a></div>
+        <nav>
+            <a href="/">Work</a>
+            <a href="/archive">Archive</a>
+            <a href="/about">Studio</a>
+        </nav>
+    </header>
+
+    <slot />
+
+    <footer>
+        <p>© 2025 Prague. Visual Research.</p>
+    </footer>
+
+</body>
+</html>
